@@ -1,0 +1,46 @@
+#+TITLE: Clear Compiler
+
+* About
+
+This project refers to an interpreter and compiler for a functional
+programming language atop of the lambda calculus theory.
+
+Clear was thought to be a functional language inspired by Forth and
+ML, making it sound while transparent as to hardware.
+
+* Features [0/0]
+- Compiler [0/4]
+  - [ ] Lexer
+  - [ ] Parser
+  - [ ] Compile to native code (x86)
+  - [ ] Compile to native code (ARM)
+- Theory [1/2]
+  - [ ] Proved grammar
+  - [X] Stability under substitution
+- Type System [0/1]
+  - [ ] Hindley Milner
+- Interpreter [7/8]
+  - [ ] REPL
+  - [X] Comparison
+  - [X] Primitives
+  - [X] Arithmetic
+  - [X] Boolean logic
+  - [X] Substitution
+  - [X] Environment
+  - [X] Application
+
+* How to run the source code
+
+** Requirements
+- Opam 2.0.8
+- OCaml 4.11.2
+- Dune 3.1.1
+
+#+BEGIN_SRC shell
+  opam init
+  eval $(opam env)
+  opam switch create 4.11.2
+  opam install dune
+  dune build
+  dune exec Clear
+#+END_SRC
