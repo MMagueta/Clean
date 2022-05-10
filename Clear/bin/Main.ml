@@ -1,11 +1,11 @@
 open Clear.Interpreter
 
-let ty_to_string = function
-  | LiteralT (Boolean x) -> Bool.to_string x
-  | LiteralT (Integer x) -> Int.to_string x
-  | _ -> "[NOT IMPLEMENTED]"
+let expression_to_string acc = function
+  | LiteralT (Boolean x) -> String.concat acc ["Bool "; Bool.to_string x]
+  | LiteralT (Integer x) -> String.concat acc ["Integer "; Int.to_string x]
+  | _ -> String.concat acc ["[NOT IMPLEMENTED]"]
 
-let print_ty chan v = output_string chan (ty_to_string v)
+let print_expression channel (v: expression) = output_string channel (expression_to_string "" v)
 
 let () =
   eval (
@@ -15,7 +15,7 @@ let () =
         )
     )
   |> (function
-      | Ok x -> Printf.printf "%a\n" print_ty x
+      | Ok x -> Printf.printf "%a\n" print_expression x
       | Error (msg: string) -> failwith msg)
 
   (* eval ( *)
